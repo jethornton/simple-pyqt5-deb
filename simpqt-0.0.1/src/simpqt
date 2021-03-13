@@ -3,7 +3,7 @@
 import sys, os
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5 import uic
-#from libsimpqtdeb import simpqtdebui
+from libsimpqt import lib1
 
 if os.path.split(sys.argv[0])[0] == '/usr/bin':
 	GUI_PATH = '/usr/lib/python3/dist-packages/libsimpqt'
@@ -13,6 +13,8 @@ if os.path.split(sys.argv[0])[0] == '.':
 	GUI_PATH = os.path.split(os.path.realpath(sys.argv[0]))[0]
 	print('In Development')
 
+# test that the import worked
+print(f'lib1.testme() returned {lib1.testme()}')
 
 class main(QMainWindow):
 	def __init__(self):

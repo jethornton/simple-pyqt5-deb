@@ -1,12 +1,12 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Something
-Comment=Simple PyQt5 deb
-Exec=simpqtdeb
+Name=Simple PyQt5
+Comment=We just Open a GUI
+Exec=simpqt
 Icon=/usr/share/pixmaps/linuxcncicon.png
-Categories=X-CNC;Utility
+Categories=Utility;
 Terminal=false
 StartupNotify=true
-StartupWMClass=simpqtdeb
+StartupWMClass=simpqt
 Name[en_US]=Simple PyQt5

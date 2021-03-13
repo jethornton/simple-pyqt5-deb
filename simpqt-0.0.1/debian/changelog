@@ -1,12 +1,5 @@
-simpqtdeb (0.1) unstable; urgency=medium
-
-  * New version
-
- -- John Thornton <jt@gnipsel.com>  Thu, 11 Mar 2021 06:55:42 -0600
-
-simpqtdeb (0.0) unstable; urgency=medium
+simpqt (0.0.1) UNRELEASED; urgency=medium
 
   * Initial release.
-  * Restructure files
 
- -- John Thornton <jt@gnipsel.com>  Wed, 17 Feb 2021 06:22:01 -0600
+ -- John Thornton <jt@gnipsel.com>  Sat, 13 Mar 2021 08:00:45 -0600
