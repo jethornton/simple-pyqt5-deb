@@ -1,0 +1,4 @@
+src/simpqtdeb usr/bin
+src/simpqtdeb.ui usr/lib/python3/dist-packages/libsimpqt
+src/libsimpqt/*.* usr/lib/python3/dist-packages/libsimpqt
+*.desktop usr/share/applications

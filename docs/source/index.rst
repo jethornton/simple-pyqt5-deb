@@ -11,6 +11,12 @@ Building a simple PyQt5 Debian deb
    :caption: Contents:
 
    structure
+   debian
+   man
+   program
+   deb
+   menu
+   import
 
 Indices and tables
 ==================

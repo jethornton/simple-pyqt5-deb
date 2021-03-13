@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+
+import sys, os
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import uic
+#from libsimpqtdeb import simpqtdebui
+
+if os.path.split(sys.argv[0])[0] == '/usr/bin':
+	GUI_PATH = '/usr/lib/python3/dist-packages/libsimpqt'
+	print('Installed')
+
+if os.path.split(sys.argv[0])[0] == '.':
+	GUI_PATH = os.path.split(os.path.realpath(sys.argv[0]))[0]
+	print('In Development')
+
+
+class main(QMainWindow):
+	def __init__(self):
+		super().__init__()
+		path, filename = os.path.split(os.path.realpath(__file__))
+		uic.loadUi(os.path.join(GUI_PATH, 'simpqt.ui'), self)
+		self.setGeometry(50, 50, 500, 300)
+		self.setWindowTitle("PyQT5 Minimal!")
+		self.show()
+
+if __name__ == '__main__':
+	app = QApplication(sys.argv)
+	gui = main()
+	sys.exit(app.exec_())
