@@ -11,7 +11,7 @@ In the src directory create the simpqt file and add the following to it.
 	from PyQt5 import uic
 
 	if os.path.split(sys.argv[0])[0] == '/usr/bin':
-		GUI_PATH = '/usr/lib/python3/dist-packages/libsimpqt'
+		GUI_PATH = '/usr/lib/simpqt'
 		print('Installed')
 
 	if os.path.split(sys.argv[0])[0] == '.':
@@ -21,7 +21,6 @@ In the src directory create the simpqt file and add the following to it.
 	class main(QMainWindow):
 		def __init__(self):
 			super().__init__()
-			path, filename = os.path.split(os.path.realpath(__file__))
 			uic.loadUi(os.path.join(GUI_PATH, 'simpqt.ui'), self)
 			self.setGeometry(50, 50, 500, 300)
 			self.setWindowTitle("PyQT5 Minimal!")
@@ -120,3 +119,8 @@ needed to build the deb.
 
 	5 directories, 10 files
 
+If you want to edit the ui file with Qt5 Designer you will need install
+it with the following command.
+::
+
+	sudo apt install libqt5designer5

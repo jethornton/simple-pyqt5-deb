@@ -112,7 +112,7 @@ PyQt5 .ui file needs to be in the package library along with any imports.
 ::
 
 	src/simpqt usr/bin
-	src/simpqt.ui usr/lib/python3/dist-packages/libsimpqt
+	src/simpqt.ui usr/lib/simpqt
 
 manpages
 --------
@@ -140,6 +140,4 @@ The source/format file just needs one line.
 ::
 
 	3.0 (native)
-
-
 
