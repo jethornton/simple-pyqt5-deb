@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desktop Application Menu &#8212; Simple PyQt5 Deb  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Importing Library" href="import.html" />
+    <link rel="prev" title="Building the deb" href="deb.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="import.html" title="Importing Library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="deb.html" title="Building the deb"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple PyQt5 Deb  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Desktop Application Menu</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="desktop-application-menu">
+<h1>Desktop Application Menu<a class="headerlink" href="#desktop-application-menu" title="Permalink to this headline">¶</a></h1>
+<p>Adding a desktop file will put your application in the Applications menu
+when you install it.</p>
+<p>Add the following to debian/install file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*.</span><span class="n">desktop</span> <span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">applications</span>
+</pre></div>
+</div>
+<div class="section" id="simple-pyqt5-desktop">
+<h2>Simple PyQt5.desktop<a class="headerlink" href="#simple-pyqt5-desktop" title="Permalink to this headline">¶</a></h2>
+<p>Create a file called <cite>Simple PyQt5.desktop</cite> in the simpqt-0.0.1
+directory. Note most file managers will drive you nuts if you rename as
+they automaticly add .desktop when you save the name so if you rename a
+.desktop be sure and delete the .desktop.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Desktop</span> <span class="n">Entry</span><span class="p">]</span>
+<span class="n">Version</span><span class="o">=</span><span class="mf">1.0</span>
+<span class="n">Type</span><span class="o">=</span><span class="n">Application</span>
+<span class="n">Name</span><span class="o">=</span><span class="n">Simple</span> <span class="n">PyQt5</span>
+<span class="n">Comment</span><span class="o">=</span><span class="n">We</span> <span class="n">just</span> <span class="n">Open</span> <span class="n">a</span> <span class="n">GUI</span>
+<span class="n">Exec</span><span class="o">=</span><span class="n">simpqt</span>
+<span class="n">Icon</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">pixmaps</span><span class="o">/</span><span class="n">linuxcncicon</span><span class="o">.</span><span class="n">png</span>
+<span class="n">Categories</span><span class="o">=</span><span class="n">Utility</span><span class="p">;</span>
+<span class="n">Terminal</span><span class="o">=</span><span class="n">false</span>
+<span class="n">StartupNotify</span><span class="o">=</span><span class="n">true</span>
+<span class="n">StartupWMClass</span><span class="o">=</span><span class="n">simpqt</span>
+<span class="n">Name</span><span class="p">[</span><span class="n">en_US</span><span class="p">]</span><span class="o">=</span><span class="n">Simple</span> <span class="n">PyQt5</span>
+</pre></div>
+</div>
+<p>Rebuild the deb as before open a terminal in the simpqt-0.0.1 directory
+and use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dpkg</span><span class="o">-</span><span class="n">buildpackage</span> <span class="o">-</span><span class="n">us</span> <span class="o">-</span><span class="n">uc</span>
+</pre></div>
+</div>
+<p>Reinstall the application and the menu will show up in Applications &gt;
+Accessories.</p>
+<p>So now the directories and files look like this after building the deb.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>john@d10cave:~/gui-deb$ tree
+.
+├── simpqt
+│   ├── debian
+│   │   ├── changelog
+│   │   ├── compat
+│   │   ├── control
+│   │   ├── copyright
+│   │   ├── debhelper-build-stamp
+│   │   ├── files
+│   │   ├── install
+│   │   ├── manpages
+│   │   ├── rules
+│   │   ├── simpqt
+│   │   │   ├── DEBIAN
+│   │   │   │   ├── control
+│   │   │   │   └── md5sums
+│   │   │   └── usr
+│   │   │       ├── bin
+│   │   │       │   └── simpqt
+│   │   │       ├── lib
+│   │   │       │   └── python3
+│   │   │       │       └── dist-packages
+│   │   │       │           └── libsimpqt
+│   │   │       │               └── simpqt.ui
+│   │   │       └── share
+│   │   │           ├── applications
+│   │   │           │   └── Simple PyQt5.desktop
+│   │   │           ├── doc
+│   │   │           │   └── simpqt
+│   │   │           │       ├── changelog.gz
+│   │   │           │       └── copyright
+│   │   │           └── man
+│   │   │               └── man1
+│   │   │                   └── simpqt.1.gz
+│   │   ├── simpqt.substvars
+│   │   └── source
+│   │       └── format
+│   ├── man
+│   │   └── simpqt.1
+│   ├── Simple PyQt5.desktop
+│   └── src
+│       ├── simpqt
+│       └── simpqt.ui
+├── simpqt_0.0.1_amd64.buildinfo
+├── simpqt_0.0.1_amd64.changes
+├── simpqt_0.0.1_amd64.deb
+├── simpqt_0.0.1.dsc
+└── simpqt_0.0.1.tar.xz
+</pre></div>
+</div>
+<p>19 directories, 28 files</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Desktop Application Menu</a><ul>
+<li><a class="reference internal" href="#simple-pyqt5-desktop">Simple PyQt5.desktop</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="deb.html"
+                        title="previous chapter">Building the deb</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="import.html"
+                        title="next chapter">Importing Library</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/menu.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="import.html" title="Importing Library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="deb.html" title="Building the deb"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple PyQt5 Deb  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Desktop Application Menu</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Importing Library &#8212; Simple PyQt5 Deb  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Desktop Application Menu" href="menu.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="menu.html" title="Desktop Application Menu"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple PyQt5 Deb  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Importing Library</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="importing-library">
+<h1>Importing Library<a class="headerlink" href="#importing-library" title="Permalink to this headline">¶</a></h1>
+<p>Add the subdirectory <cite>libsimpqt</cite> to simpqt-0.0.1/src for our library
+file. Add a <cite>lib1.py</cite> file to the libsimpqt directory.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>all the files that <cite>dpkg-buildpackage</cite> creates have been
+removed for clarity.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>john@d10cave:~/gui-deb$ tree
+.
+└── simpqt
+    ├── debian
+    │   ├── changelog
+    │   ├── compat
+    │   ├── control
+    │   ├── copyright
+    │   ├── install
+    │   ├── manpages
+    │   ├── rules
+    │   └── source
+    │       └── format
+    ├── man
+    │   └── simpqt.1
+    ├── Simple PyQt5.desktop
+    └── src
+        ├── libsimpqt
+        │   └── lib1.py
+        ├── simpqt
+        └── simpqt.ui
+
+6 directories, 13 files
+</pre></div>
+</div>
+<div class="section" id="lib1-py">
+<h2>lib1.py<a class="headerlink" href="#lib1-py" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">testme</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Function Import Test&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simpqt">
+<h2>simpqt<a class="headerlink" href="#simpqt" title="Permalink to this headline">¶</a></h2>
+<p>Modifications to the original <cite>simpqt</cite> file to import the library and
+test the import by calling the function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python3</span>
+
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">PyQt5.QtWidgets</span> <span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span>
+<span class="kn">from</span> <span class="nn">PyQt5</span> <span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span> <span class="nn">libsimpqt</span> <span class="kn">import</span> <span class="n">lib1</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;/usr/bin&#39;</span><span class="p">:</span>
+        <span class="n">GUI_PATH</span> <span class="o">=</span> <span class="s1">&#39;/usr/lib/python3/dist-packages/libsimpqt&#39;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Installed&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;.&#39;</span><span class="p">:</span>
+        <span class="n">GUI_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In Development&#39;</span><span class="p">)</span>
+
+<span class="c1"># test that the import worked</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lib1.testme() returned </span><span class="si">{</span><span class="n">lib1</span><span class="o">.</span><span class="n">testme</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">main</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+                <span class="n">path</span><span class="p">,</span> <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+                <span class="n">uic</span><span class="o">.</span><span class="n">loadUi</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">GUI_PATH</span><span class="p">,</span> <span class="s1">&#39;simpqt.ui&#39;</span><span class="p">),</span> <span class="bp">self</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;PyQT5 Minimal!&quot;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+        <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+        <span class="n">gui</span> <span class="o">=</span> <span class="n">main</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec_</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install">
+<h2>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>Add the installation location for the library file in the format <cite>file</cite>
+space <cite>location</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="o">/</span><span class="n">simpqt</span> <span class="n">usr</span><span class="o">/</span><span class="nb">bin</span>
+<span class="n">src</span><span class="o">/</span><span class="n">simpqt</span><span class="o">.</span><span class="n">ui</span> <span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">libsimpqt</span>
+<span class="o">*.</span><span class="n">desktop</span> <span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">applications</span>
+<span class="n">src</span><span class="o">/</span><span class="n">libsimpqt</span><span class="o">/*.*</span> <span class="n">usr</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="o">/</span><span class="n">dist</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">libsimpqt</span>
+</pre></div>
+</div>
+<p>Open a terminal in the <cite>simpqt/src</cite> directory and test the program.
+The <cite>./</cite> means look in this directory for the executable file in linux.</p>
+<img alt="_images/import-01.png" class="align-center" src="_images/import-01.png" />
+<p>As you can see the import of the library worked and it printed out to
+the terminal as expected.</p>
+</div>
+<div class="section" id="build-the-deb">
+<h2>Build the deb<a class="headerlink" href="#build-the-deb" title="Permalink to this headline">¶</a></h2>
+<p>As before open a terminal in the <cite>simpqt</cite> directory and use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dpkg</span><span class="o">-</span><span class="n">buildpackage</span> <span class="o">-</span><span class="n">us</span> <span class="o">-</span><span class="n">uc</span>
+</pre></div>
+</div>
+<p>In the <cite>gui-deb</cite> directory right click on the deb and open with Gdebi
+and install.</p>
+<p>Run from the Applications &gt; Accessories menu or from a terminal with the
+command <cite>simpqt</cite>.</p>
+<img alt="_images/import-02.png" class="align-center" src="_images/import-02.png" />
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Importing Library</a><ul>
+<li><a class="reference internal" href="#lib1-py">lib1.py</a></li>
+<li><a class="reference internal" href="#simpqt">simpqt</a></li>
+<li><a class="reference internal" href="#install">install</a></li>
+<li><a class="reference internal" href="#build-the-deb">Build the deb</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="menu.html"
+                        title="previous chapter">Desktop Application Menu</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/import.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="menu.html" title="Desktop Application Menu"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Simple PyQt5 Deb  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Importing Library</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, John Thornton.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.2.
+    </div>
+  </body>
+</html>
