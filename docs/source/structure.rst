@@ -8,10 +8,10 @@ The example Python program is called simpqt. Setup the directory
 structure for the program as shown.
 ::
 
-	john@d10cave:~/gui-deb$ mkdir -p simpqt-0.0.1/debian/source simpqt-0.0.1/man simpqt-0.0.1/src
+	john@d10cave:~/gui-deb$ mkdir -p simpqt/debian/source simpqt/man simpqt/src
 	john@d10cave:~/gui-deb$ tree
 	.
-	└── simpqt-0.0.1
+	└── simpqt
 	    ├── debian
 	    │   └── source
 	    ├── man
@@ -28,6 +28,4 @@ You can create the directories with a file manager or in a terminal with the
 following command.
 ::
 
-  mkdir -p simpqt-0.0.1/debian/source simpqt-0.0.1/man simpqt-0.0.1/src
-
-
+  mkdir -p simpqt/debian/source simpqt/man simpqt/src

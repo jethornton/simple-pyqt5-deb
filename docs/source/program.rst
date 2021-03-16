@@ -99,7 +99,7 @@ needed to build the deb.
 
 	john@d10cave:~/gui-deb$ tree
 	.
-	└── simpqt-0.0.1
+	└── simpqt
 	    ├── debian
 	    │   ├── changelog
 	    │   ├── compat

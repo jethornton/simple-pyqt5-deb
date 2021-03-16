@@ -6,7 +6,7 @@ The following files are needed in the `debian` directory.
 
 	john@d10cave:~/gui-deb$ tree
 	.
-	└── simpqt-0.0.1
+	└── simpqt
 	    ├── debian
 	    │   ├── compat
 	    │   ├── control
@@ -26,7 +26,7 @@ The following files are needed in the `debian` directory.
 You can add them with the file manager or with the following commands.
 ::
 
-	cd simpqt-0.0.1/debian
+	cd simpqt/debian
 	touch control compat copyright files manpages rules install source/format
 	cd ..
 
@@ -53,7 +53,7 @@ Or in a terminal.
 	export DEBEMAIL DEBFULLNAME
 	EOF
 
-The terminal should be in the simpqt-0.0.1 directory to create the
+The terminal should be in the `simpqt` directory to create the
 changelog file with the following command.
 ::
 

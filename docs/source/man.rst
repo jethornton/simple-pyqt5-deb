@@ -19,7 +19,7 @@ Now the directory structure looks like this.
 
 	john@d10cave:~/minimal-deb$ tree
 	.
-	└── simpqt-0.0.1
+	└── simpqt
 	    ├── debian
 	    │   ├── changelog
 	    │   ├── compat

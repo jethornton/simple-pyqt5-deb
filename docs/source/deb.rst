@@ -1,7 +1,7 @@
 Building the deb
 ================
 
-In the simpqt-0.0.1 directory of the program in this case it's a 
+In the `simpqt` directory of the program in this case it's a 
 subdirectory of gui-deb open a terminal and build the deb with the
 following command.
 ::
@@ -14,7 +14,7 @@ copy and paste the file name instead of typing it out.
 ::
 
 	john@d10cave:~/gui-deb$ ls
-	simpqt-0.0.1                  simpqt_0.0.1_amd64.changes  simpqt_0.0.1.dsc
+	simpqt                  simpqt_0.0.1_amd64.changes  simpqt_0.0.1.dsc
 	simpqt_0.0.1_amd64.buildinfo  simpqt_0.0.1_amd64.deb      simpqt_0.0.1.tar.xz
 	john@d10cave:~/gui-deb$ lintian simpqt_0.0.1_amd64.deb
 	john@d10cave:~/gui-deb$ 

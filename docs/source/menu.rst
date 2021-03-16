@@ -47,7 +47,7 @@ So now the directories and files look like this after building the deb.
 
 	john@d10cave:~/gui-deb$ tree
 	.
-	├── simpqt-0.0.1
+	├── simpqt
 	│   ├── debian
 	│   │   ├── changelog
 	│   │   ├── compat

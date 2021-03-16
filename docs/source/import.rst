@@ -11,7 +11,7 @@ file. Add a `lib1.py` file to the libsimpqt directory.
 
 	john@d10cave:~/gui-deb$ tree
 	.
-	└── simpqt-0.0.1
+	└── simpqt
 	    ├── debian
 	    │   ├── changelog
 	    │   ├── compat
@@ -93,7 +93,7 @@ space `location`.
 	*.desktop usr/share/applications
 	src/libsimpqt/*.* usr/lib/python3/dist-packages/libsimpqt
 
-Open a terminal in the `simpqt-0.0.1/src` directory and test the program.
+Open a terminal in the `simpqt/src` directory and test the program.
 The `./` means look in this directory for the executable file in linux.
 
 .. image:: images/import-01.png
@@ -105,7 +105,7 @@ the terminal as expected.
 Build the deb
 -------------
 
-As before open a terminal in the `simpqt-0.0.1` directory and use
+As before open a terminal in the `simpqt` directory and use
 ::
 
 	dpkg-buildpackage -us -uc
